@@ -229,6 +229,27 @@ Top 5 UTM: 1.FortinetFortigate: syet
            1.1: Palo Alto:superSuplado
            2. Checkpoint
            3.4 Cisco
+www.web310.com open only http, https, ping
+www.web311.com open only dns, https, ssh --> 5 lines
+
+Golden Firewall Formula
+protocol 		hacker 	victim 		port
+
+tcp,udp,icmp,ip		Any 	web310/11
+
+conf t
+service timestamps log datetime
+service timestamps debug datetime
+logging 10.31.1.10
+logging trap 5
+no ip access-list Extended FWP3
+ip access-list Extended FWP3
+permit tcp any host www.web310.com eq 443 log
+permit icmp any host www.web311.com log
+int gi 3
+ip access-group FWP3 in 
+
+takas control shift 6 bitaw x
 
 CYBERSECURITY TASK7: PROTECTING YOUR CORPORATE WEB APPS.
 EX.1 CREATE A FIREWALL POLICY NAMED Policy1 TO OPEN
